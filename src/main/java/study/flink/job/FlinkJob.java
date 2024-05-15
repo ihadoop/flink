@@ -28,9 +28,11 @@ public class FlinkJob {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        DataStream<String> kinesis = env.addSource(new FlinkKinesisConsumer<>(
-                "kinesis_stream_name", new SimpleStringSchema(), consumerConfig));
-
+        //mock data from local file
+        //TODO
+//        DataStream<String> kinesis = env.addSource(new FlinkKinesisConsumer<>(
+//                "kinesis_stream_name", new SimpleStringSchema(), consumerConfig));
+        DataStream<String> kinesis  = env.addSource();
 
 
 
