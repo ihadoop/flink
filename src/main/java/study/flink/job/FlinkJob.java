@@ -39,6 +39,7 @@ public class FlinkJob {
 //                })
 //                .writeAsText("file:///Users/sunshine/Downloads/1.json");
 
+       // kinesis.addSink()
         JobExecutionResult res = env.execute();
     }
 }
