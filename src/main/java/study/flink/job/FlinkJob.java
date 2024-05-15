@@ -45,7 +45,7 @@ public class FlinkJob {
                 new UserData("0987654321", "user2@example.com", "Jane Doe")
         );
 
-       //
+       //window counter
 
 
 
