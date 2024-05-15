@@ -1,5 +1,6 @@
 package study.flink.job;
 
+import jakarta.annotation.PostConstruct;
 import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
@@ -10,12 +11,14 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kinesis.FlinkKinesisConsumer;
 import org.apache.flink.streaming.connectors.kinesis.config.AWSConfigConstants;
 import org.apache.flink.streaming.connectors.kinesis.config.ConsumerConfigConstants;
+import org.springframework.stereotype.Service;
 
 import java.util.Properties;
-
+@Service
 public class FlinkJob {
 
-    public static void main(String[] args) throws Exception {
+    @PostConstruct
+    public  void init() throws Exception {
 
         Properties consumerConfig = new Properties();
         consumerConfig.put(AWSConfigConstants.AWS_REGION, "us-east-1");
@@ -27,6 +30,8 @@ public class FlinkJob {
 
         DataStream<String> kinesis = env.addSource(new FlinkKinesisConsumer<>(
                 "kinesis_stream_name", new SimpleStringSchema(), consumerConfig));
+
+
 
 
 //
